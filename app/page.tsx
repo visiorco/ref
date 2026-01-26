@@ -159,6 +159,13 @@ export default function Home() {
         setFormData({ name: '', email: '', phone: '', revenue: '' });
     };
 
+    const scrollToPricing = () => {
+        const pricingSection = document.getElementById('pricing');
+        if (pricingSection) {
+            pricingSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         const checkDarkMode = () => {
             if (bioSectionRef.current) {
@@ -217,7 +224,20 @@ export default function Home() {
             rootMargin: '0px 0px -50px 0px'
         });
 
-        const elements = document.querySelectorAll(`.${styles.description}, .${styles.storySection}, .${styles.pillarsSection}`);
+        const elements = document.querySelectorAll(`
+            .${styles.storySection}, 
+            .${styles.pillarsSection}, 
+            .${styles.methodologySection}, 
+            .${styles.investmentSection}, 
+            .${styles.bioSection}, 
+            .${styles.guaranteeSection}, 
+            .${styles.faqSection}, 
+            .${styles.ctaSection}
+        `);
+        // Adicionamos a marketSection separadamente se quisermos que ela apenas dispare os filhos
+        const marketSection = document.querySelector(`.${styles.marketSection}`);
+        if (marketSection) observer.observe(marketSection);
+
         elements.forEach((el) => observer.observe(el));
 
         return () => observer.disconnect();
@@ -264,7 +284,7 @@ export default function Home() {
                         </p>
 
                         <div className={styles.heroButtonWrapper}>
-                            <button className={styles.priceButton} onClick={openModal}>
+                            <button className={styles.priceButton} onClick={scrollToPricing}>
                                 <div className={styles.priceButtonText}>GARANTIR MINHA VAGA</div>
                                 <div className={styles.priceArrowCircle}>
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -315,7 +335,7 @@ export default function Home() {
                             Depois de sair de <strong>contratos de R$150 para mais de R$1.2Milhões trabalhando com posicionamento de marcas</strong> empresarias e ter saído de atender uma pizzaria de bairro para marca de suplementação do Neymar Jr.
                         </h2>
 
-                        <button className={`${styles.priceButton} ${styles.priceButtonGrid}`} onClick={openModal}>
+                        <button className={`${styles.priceButton} ${styles.priceButtonGrid}`} onClick={scrollToPricing}>
                             <div className={styles.priceButtonText}>Quero ser mais relevante</div>
                             <div className={styles.priceArrowCircle}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -393,7 +413,7 @@ export default function Home() {
                         </h2>
 
                         <div className={styles.methodologyCTA}>
-                            <button className={styles.priceButton} onClick={openModal}>
+                            <button className={styles.priceButton} onClick={scrollToPricing}>
                                 <div className={styles.priceButtonText}>Quero ser o profissional mais relevante</div>
                                 <div className={styles.priceArrowCircle}>
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -615,7 +635,7 @@ export default function Home() {
                     </p>
 
                     <div className={styles.ctaButtonWrapper}>
-                        <button className={styles.priceButton} onClick={openModal}>
+                        <button className={styles.priceButton} onClick={scrollToPricing}>
                             <div className={styles.priceButtonText}>GARANTIR MINHA VAGA</div>
                             <div className={styles.priceArrowCircle}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
