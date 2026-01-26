@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   title: "Academia Lendária",
   description: "Ecossistema de Educação & Inovação com IA",
   icons: {
-    icon: "/FAV-Academia.png",
-    shortcut: "/FAV-Academia.png",
-    apple: "/FAV-Academia.png",
+    icon: "/FAV-Icon.png",
+    shortcut: "/FAV-Icon.png",
+    apple: "/FAV-Icon.png",
   },
 };
 
@@ -55,6 +55,16 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body className={`${geistSans.variable} ${geistMono.variable} ${neueHaas.variable}`}>
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            window.pixelId = "696f8b549a741977dffb6b76";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
         <LanguageProvider>
           {children}
         </LanguageProvider>
