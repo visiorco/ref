@@ -517,7 +517,7 @@ export default function Home() {
                 <div className={styles.bioContainer}>
                     <div className={styles.bioImageWrapper}>
                         <Image
-                            src="/Bruno-bio.png"
+                            src="/Bruno-BIO.png"
                             alt="Bruno Andrade"
                             width={500}
                             height={600}
