@@ -1,0 +1,329 @@
+.programsSection {
+    background-color: #000;
+    padding: 128px 0 64px 0;
+    color: #fff;
+}
+
+.programsSection .container {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.programsSection.visible .container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.sectionHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.labelWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #242424;
+    border-radius: 24px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 868px;
+}
+
+.programsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+}
+
+.programCard {
+    background: #000;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When grid has a hovered card, keep all cards opaque but scale them slightly */
+.programsGrid:has(.programCard:hover) .programCard {
+    transform: scale(0.98);
+}
+
+/* Keep the hovered card active */
+.programsGrid:has(.programCard:hover) .programCard:hover {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.programImage {
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+/* Make inactive card images grayscale */
+.programsGrid:has(.programCard:hover) .programCard:not(:hover) .programImage {
+    filter: grayscale(100%);
+}
+
+/* Change arrow colors for inactive cards */
+.programsGrid:has(.programCard:hover) .programCard:not(:hover) .learnMoreButton svg {
+    background: #242424;
+    color: #484848;
+}
+
+/* Reduce opacity of text elements in inactive cards */
+.programsGrid:has(.programCard:hover) .programCard:not(:hover) .programTitle,
+.programsGrid:has(.programCard:hover) .programCard:not(:hover) .programDescription,
+.programsGrid:has(.programCard:hover) .programCard:not(:hover) .learnMoreButton span {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+.cardContent {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.iconWrapper {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconWrapper img {
+    filter: brightness(0) invert(1);
+}
+
+.programTitle {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.programDescription {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.75;
+    color: #b8b8b8;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.highlight {
+    color: #fff;
+}
+
+.learnMoreButton {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.learnMoreButton>span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.learnMoreButton span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+    color: #ffffff;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+.learnMoreButton svg {
+    width: 32px;
+    height: 32px;
+    color: #000000;
+    flex-shrink: 0;
+    background: #FFD44A;
+    padding: 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    transition: background 0.3s ease;
+}
+
+.learnMoreButton svg path {
+    transition: transform 0.44s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate(0, 0);
+}
+
+/* Underline effect */
+.learnMoreButton::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, #ffcc00 0%, #ffcc00 50%, rgba(255, 255, 255, 0.2) 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+    animation: progressLineReverse 0.48s ease-out forwards;
+}
+
+.learnMoreButton:hover::after {
+    animation: progressLine 0.48s ease-out forwards;
+}
+
+@keyframes progressLine {
+    from {
+        background-position: 100% 0;
+    }
+
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes progressLineReverse {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100% 0;
+    }
+}
+
+.learnMoreButton:hover svg {
+    background: #ffcc00;
+}
+
+.learnMoreButton:hover svg path {
+    animation: arrowLoop 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes arrowLoop {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translate(8px, -8px);
+        opacity: 0;
+    }
+
+    41% {
+        transform: translate(-8px, 8px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .programsSection {
+        padding: 64px 0;
+    }
+
+    .container {
+        padding: 0 48px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 48px;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .programsSection {
+        padding: 24px 0;
+    }
+
+    .container {
+        padding: 0 24px;
+        max-width: 100%;
+    }
+
+    .programsGrid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .sectionHeader {
+        margin-bottom: 24px;
+        gap: 16px;
+    }
+
+    .programTitle {
+        font-size: 24px;
+    }
+
+    .cardContent {
+        padding: 0;
+        margin-top: 24px;
+        width: 100%;
+    }
+
+    .programCard {
+        width: 100%;
+    }
+}

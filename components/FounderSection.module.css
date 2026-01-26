@@ -1,0 +1,371 @@
+@property --border-angle-founder {
+    inherits: false;
+    initial-value: 180deg;
+    syntax: '<angle>';
+}
+
+.section {
+    background-color: #000;
+    padding: 120px 0 64px 0;
+    color: #fff;
+    overflow: visible;
+    perspective: 1200px;
+}
+
+.section .container {
+    opacity: 0;
+    transform: translateY(150px) rotateX(15deg);
+    transform-origin: center bottom;
+    transform-style: preserve-3d;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.visible .container {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 60px;
+    align-items: stretch;
+}
+
+/* Common Column Styles */
+.founderInfo,
+.videoColumn,
+.descriptionColumn {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+}
+
+.centerColumn {
+    justify-content: center;
+}
+
+/* First Column */
+.founderInfo {
+    height: 100%;
+    justify-content: space-between;
+}
+
+.topInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.name {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.02em;
+}
+
+.role {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #b8b8b8;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.tags {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tagItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.tagItem:first-child {
+    padding-top: 0;
+}
+
+.tagItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.tagItem svg {
+    color: #242424;
+    width: 20px;
+    height: 20px;
+}
+
+/* Second Column (Video) */
+.videoColumn {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #161616;
+    aspect-ratio: 9 / 16;
+    width: 100%;
+    max-width: 100%;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Third Column */
+.descriptionColumn {
+    justify-content: space-between;
+    background:
+        linear-gradient(#161616, #161616) padding-box,
+        conic-gradient(from var(--border-angle-founder), #242424 80%, #646464 86%, #646464 90%, #646464 94%, #242424) border-box;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    padding: 48px;
+}
+
+.descriptionColumn.animating {
+    animation: rotateBorderFounder 6.4s linear infinite;
+}
+
+@keyframes rotateBorderFounder {
+    to {
+        --border-angle-founder: 540deg;
+    }
+}
+
+.descriptionBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.descriptionText {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #b8b8b8;
+    margin: 0;
+}
+
+.highlight {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Marquee Styles */
+.marqueeContainer {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    margin-top: 28px;
+}
+
+.marqueeTrackWrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+.marqueeTrackWrapper::before,
+.marqueeTrackWrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marqueeTrackWrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(22, 22, 22, 1) 0%, rgba(22, 22, 22, 0.8) 40%, rgba(22, 22, 22, 0) 100%);
+}
+
+.marqueeTrackWrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(22, 22, 22, 1) 0%, rgba(22, 22, 22, 0.8) 40%, rgba(22, 22, 22, 0) 100%);
+}
+
+.marqueeLabel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.24);
+    margin-bottom: 16px;
+    padding: 12px 0;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marqueeLabel i {
+    font-size: 12px;
+}
+
+.marqueeTrackContainer {
+    padding-bottom: 0;
+}
+
+.marqueeTrack {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    animation: marquee 40s linear infinite;
+    width: max-content;
+}
+
+.logoItem {
+    flex-shrink: 0;
+    opacity: 0.4;
+    filter: grayscale(1) brightness(0) invert(1);
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoItem:hover {
+    opacity: 0.8;
+}
+
+.newsLogo {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 20px));
+    }
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 64px 0;
+    }
+
+    .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        padding: 0 48px;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .name {
+        font-size: 36px;
+    }
+
+    .tags {
+        align-items: flex-start;
+        margin-top: 32px;
+        width: 100%;
+    }
+
+    .tagItem {
+        width: 100%;
+    }
+
+    .videoColumn {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .descriptionColumn {
+        text-align: left;
+    }
+
+    .founderInfo {
+        text-align: center;
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .section {
+        padding: 64px 0 24px 0;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 24px;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .name {
+        font-size: 32px;
+    }
+
+    .descriptionColumn {
+        padding: 32px 24px;
+        text-align: left;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .videoColumn {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 9 / 16;
+        order: 2;
+    }
+
+    .founderInfo {
+        text-align: center;
+        grid-column: span 1;
+        order: 1;
+    }
+
+    .descriptionColumn {
+        order: 3;
+    }
+
+    .descriptionText {
+        font-size: 16px;
+    }
+
+    .tags {
+        margin-top: 32px;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .tagItem {
+        width: 100%;
+    }
+}

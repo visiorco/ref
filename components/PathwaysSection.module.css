@@ -1,0 +1,164 @@
+.section {
+    padding: 128px 0;
+    background: #000;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 200px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.badge i {
+    font-size: 16px;
+}
+
+.title {
+    font-family: 'Inter', sans-serif;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    color: #fff;
+}
+
+.highlight {
+    background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+}
+
+.card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cardImage {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage img {
+    transform: scale(1.05);
+}
+
+.cardContent {
+    padding: 32px;
+}
+
+.cardTitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.cardDescription {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #b8b8b8;
+    margin-bottom: 24px;
+}
+
+.cardDescription span {
+    color: #fff;
+}
+
+.cardButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.cardButton::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.cardButton:hover::after {
+    transform: scaleX(1);
+}
+
+.cardButton svg {
+    transition: transform 0.3s ease;
+}
+
+.cardButton:hover svg {
+    transform: translate(4px, -4px);
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+}

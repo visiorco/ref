@@ -1,0 +1,244 @@
+.footerWrapper {
+    background-color: #000;
+    padding: 0 8px 8px 8px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.footerContainer {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 100px 0 60px 0;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 1888px;
+    max-width: calc(100% - 16px);
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 18fr 22fr 20fr 40fr;
+    gap: 40px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 12px;
+    font-weight: 500;
+    color: #646464;
+    margin-bottom: 18px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.marginTop {
+    margin-top: 3px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list li {
+    margin-bottom: 18px;
+}
+
+.list a {
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    opacity: 0.64;
+}
+
+.list a:hover {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* Info Column */
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.socialIcon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.socialIcon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+.iconImg {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover .iconImg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.tagline {
+    margin-bottom: 36px;
+    max-width: 480px;
+}
+
+.tagline p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 400;
+}
+
+.tagline strong {
+    font-weight: 600;
+}
+
+.copyright {
+    width: 100%;
+}
+
+.copyright p {
+    font-size: 12px;
+    color: #646464;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.cnpj {
+    letter-spacing: 0;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .footerWrapper {
+        padding: 0 0 48px 0;
+    }
+
+    .footerContainer {
+        padding: 80px 0 50px 0;
+        max-width: calc(100% - 96px);
+        margin: 0 48px;
+    }
+
+    .container {
+        padding: 0 48px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px 40px;
+    }
+
+    .infoColumn {
+        grid-column: span 2;
+    }
+
+    .columnTitle {
+        font-size: 14px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .footerWrapper {
+        padding: 0 0 24px 0;
+    }
+
+    .footerContainer {
+        padding: 60px 0 40px 0;
+        max-width: calc(100% - 48px);
+        margin: 0 24px;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .infoColumn {
+        grid-column: span 1;
+    }
+
+    .columnTitle {
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .tagline p {
+        font-size: 14px;
+    }
+
+    .copyright p {
+        font-size: 11px;
+    }
+}

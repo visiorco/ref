@@ -1,0 +1,373 @@
+@property --border-angle {
+    inherits: false;
+    initial-value: 0deg;
+    syntax: '<angle>';
+}
+
+.introSection {
+    background-color: #000;
+    padding: 64px 0;
+    color: #fff;
+    overflow: visible;
+    perspective: 1200px;
+}
+
+.introSection .container {
+    opacity: 0;
+    transform: translateY(150px) rotateX(15deg);
+    transform-origin: center bottom;
+    transform-style: preserve-3d;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.introSection.visible .container {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.title {
+    font-size: 64px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 64px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.gradientText {
+    display: inline-block;
+    background: linear-gradient(110deg,
+            #ffffff 0%,
+            #ffffff 40%,
+            #b8b8b8 50%,
+            #ffffff 60%,
+            #ffffff 100%);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    will-change: background-position;
+    animation: shimmer 13s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        background-position: 200% 0;
+    }
+
+    30% {
+        background-position: -200% 0;
+    }
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background: linear-gradient(45deg, #161616, #1a1a1a 50%, #161616) padding-box,
+        conic-gradient(from var(--border-angle), #242424 80%, #646464 86%, #646464 90%, #646464 94%, #242424) border-box;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    padding: 48px;
+    position: relative;
+}
+
+.textContent.animating {
+    animation: rotateBorder 6.4s linear infinite;
+}
+
+@property --border-angle-globe {
+    inherits: false;
+    initial-value: 180deg;
+    syntax: '<angle>';
+}
+
+.visualContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #000, #0a0a0a 50%, #000) padding-box,
+        conic-gradient(from var(--border-angle-globe), #242424 80%, #646464 86%, #646464 90%, #646464 94%, #242424) border-box;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    padding: 16px;
+    height: 100%;
+}
+
+.visualContent.animating {
+    animation: rotateBorderGlobe 6.4s linear infinite;
+}
+
+@keyframes rotateBorderGlobe {
+    to {
+        --border-angle-globe: 540deg;
+    }
+}
+
+@keyframes rotateBorder {
+    to {
+        --border-angle: 360deg;
+    }
+}
+
+.paragraph {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.paragraph strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.globeWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 1;
+    margin-top: -40px;
+}
+
+.globeImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.statsCard {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    width: calc(100% - 32px);
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid #242424;
+    border-radius: 8px;
+    padding: 32px;
+    overflow: hidden;
+}
+
+.statsRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.statIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.statDivider {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 8px;
+}
+
+.statItemLarge {
+    font-size: 40px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.hubsButton {
+    display: block;
+    background: #0066FF;
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.hubsButton:hover {
+    background: #0052cc;
+    transform: translateY(-2px);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .introSection {
+        padding-top: 64px;
+    }
+
+    .container {
+        padding: 0 48px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 48px;
+        margin-bottom: 48px;
+    }
+
+    .contentGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .textContent,
+    .visualContent {
+        width: 100%;
+    }
+
+    .textContent {
+        padding: 40px;
+    }
+
+    .visualContent {
+        height: auto;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px 140px 16px;
+        overflow: visible;
+    }
+
+    .globeWrapper {
+        width: 100%;
+        max-width: 450px;
+        aspect-ratio: 1;
+        margin-top: 0;
+        position: relative;
+        flex-shrink: 0;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .introSection {
+        padding-top: 24px;
+    }
+
+    .container {
+        padding: 0 24px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 32px;
+        margin-bottom: 24px;
+    }
+
+    .contentGrid {
+        gap: 24px;
+    }
+
+    .textContent {
+        padding: 32px 24px;
+        width: 100%;
+    }
+
+    .paragraph {
+        font-size: 16px;
+    }
+
+    /* ... rest of the styles ... */
+
+    .visualContent {
+        padding: 0 16px 160px 16px;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+
+    .globeWrapper {
+        width: 100%;
+        max-width: 380px;
+        aspect-ratio: 1;
+        margin-top: -20px;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .statsCard {
+        padding: 24px;
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        width: calc(100% - 24px);
+    }
+
+    .statsRow {
+        flex-direction: row;
+        /* Keep row if possible but smaller font */
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+    }
+
+    .statItem {
+        font-size: 13px;
+        gap: 4px;
+    }
+
+    .statIcon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .statItemLarge {
+        font-size: 20px;
+    }
+
+    .hubsButton {
+        font-size: 13px;
+        padding: 12px 12px;
+        line-height: 1.4;
+    }
+
+    .statDivider {
+        display: none;
+    }
+}

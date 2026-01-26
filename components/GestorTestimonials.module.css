@@ -1,0 +1,304 @@
+.section {
+    padding: 128px 0;
+    background: #000;
+    overflow: hidden;
+}
+
+.section .container,
+.section .carousel {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section.visible .container,
+.section.visible .carousel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+}
+
+.title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.controls {
+    display: flex;
+    gap: 4px;
+    background: #161616;
+    padding: 4px 8px;
+    border-radius: 200px;
+    margin-bottom: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sliding circle background */
+.controls::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: #ffcc00;
+    border-radius: 200px;
+    top: 4px;
+    left: 22px;
+    opacity: 0;
+    transition: left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Show circle on first button hover */
+.controls:has(.controlBtn:first-child:hover)::before {
+    left: 4px;
+    opacity: 1;
+}
+
+/* Move circle to second button on hover */
+.controls:has(.controlBtn:last-child:hover)::before {
+    left: 40px;
+    opacity: 1;
+}
+
+.controlBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 200px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.controlBtn i {
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controlBtn:hover {
+    color: #000;
+}
+
+.controlBtn:first-child {
+    margin-left: -4px;
+}
+
+.controlBtn:last-child {
+    margin-right: -4px;
+}
+
+.carousel {
+    position: relative;
+    max-width: 1480px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carouselInner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.track {
+    display: flex;
+    gap: 64px;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 584px;
+    height: 328px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #161616;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.videoWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.shadowLeft {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 48%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.shadowRight {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(-90deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 48%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 64px 0;
+    }
+
+    .container,
+    .carouselInner {
+        padding: 0 48px;
+        max-width: 100%;
+    }
+
+    .header {
+        margin-bottom: 48px;
+        padding: 0;
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .carousel {
+        overflow: visible;
+    }
+
+    .carouselInner {
+        padding: 0;
+        overflow: visible;
+    }
+
+    .track {
+        padding-left: 10vw;
+        gap: 16px;
+    }
+
+    .slide {
+        width: 80vw;
+        height: calc(80vw * 9 / 16);
+        flex-shrink: 0;
+    }
+
+    .shadowLeft,
+    .shadowRight {
+        width: 32px;
+    }
+}
+
+.titleBreak {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 64px 0;
+    }
+
+    .container,
+    .carouselInner {
+        padding: 0 24px;
+        max-width: 100%;
+    }
+
+    .header {
+        margin-bottom: 24px;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0;
+    }
+
+    .title {
+        font-size: 28px;
+        text-align: left;
+    }
+
+    .titleBreak {
+        display: block !important;
+    }
+
+    .controls {
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .carousel {
+        overflow: visible;
+    }
+
+    .carouselInner {
+        padding: 0;
+        overflow: visible;
+    }
+
+    .track {
+        padding-left: 10vw;
+        /* Center the first slide */
+        gap: 16px;
+    }
+
+    .slide {
+        width: 80vw;
+        height: calc(80vw * 9 / 16);
+        /* Maintain 16:9 aspect ratio */
+        flex-shrink: 0;
+    }
+
+    .shadowLeft,
+    .shadowRight {
+        width: 24px;
+    }
+
+    .titleBreak {
+        display: block !important;
+    }
+}

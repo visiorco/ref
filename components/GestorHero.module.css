@@ -1,0 +1,190 @@
+.heroWrapper {
+    background-color: #000;
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 42px 8px 0 8px;
+    overflow-x: hidden;
+}
+
+.heroContainer {
+    position: relative;
+    width: 1888px;
+    height: 720px;
+    max-width: calc(100% - 16px);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.backgroundOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 16px;
+    z-index: 0;
+}
+
+.darkOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(36, 36, 36, 0.4);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 24px;
+}
+
+.titleContainer {
+    cursor: default;
+}
+
+.textBlock {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.1;
+    margin: 0;
+    color: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.description {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 24px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content * {
+    pointer-events: auto;
+}
+
+/* Button */
+.buttonsContainer {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctaButton {
+    --background: #FFD44A;
+    --text: #000000;
+    --font-size: 18px;
+    --duration: 0.44s;
+    --move-hover: -4px;
+    --font-shadow: 20px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: var(--font-size);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text);
+    background: var(--background);
+    border: 1px solid #FFD44A;
+    border-radius: 8px;
+    padding: 20px 40px;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+
+    transform: translateY(var(--y, 0)) translateZ(0);
+    transition: transform var(--duration) ease, background 0.8s ease, border-color 0.8s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    outline: none;
+}
+
+.ctaButton div {
+    display: flex;
+    overflow: hidden;
+    text-shadow: 0 var(--font-shadow) 0 var(--text);
+    height: 24px;
+}
+
+.ctaButton span {
+    display: block;
+    backface-visibility: hidden;
+    font-style: normal;
+    transition: transform var(--duration) ease;
+    transform: translateY(var(--m, 0)) translateZ(0);
+}
+
+.ctaButton:hover {
+    --y: var(--move-hover);
+    background: #FFC107;
+    border-color: #ffcc00;
+}
+
+.ctaButton:hover span {
+    --m: -24px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .heroContainer {
+        height: auto;
+        min-height: 600px;
+        padding: 80px 0;
+    }
+
+    .textBlock {
+        font-size: 48px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .heroWrapper {
+        padding: 42px 16px 0 16px;
+    }
+
+    .heroContainer {
+        min-height: 500px;
+        padding: 64px 0;
+    }
+
+    .textBlock {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-top: 16px;
+    }
+
+    .ctaButton {
+        --font-size: 16px;
+        padding: 16px 24px;
+        width: 100%;
+        justify-content: center;
+    }
+}

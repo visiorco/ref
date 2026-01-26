@@ -1,0 +1,95 @@
+.preloader {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.64);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.innerSection {
+    position: absolute;
+    inset: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.infinityContainer {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.centerContent.active .infinityContainer {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.infinitySvg {
+    width: 120px;
+    height: 60px;
+}
+
+.infinitySymbol {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 8;
+    stroke-linecap: round;
+    /* Calculated for the specific path length ~273 units */
+    stroke-dasharray: 68 205;
+    animation: snake 3s linear infinite;
+}
+
+.loadingText {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    /* Medium weight */
+    letter-spacing: normal;
+    margin: 0;
+    display: flex;
+}
+
+.letter {
+    display: inline-block;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.centerContent.active .letter {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes snake {
+    0% {
+        stroke-dashoffset: 273;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
