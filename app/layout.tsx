@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+
 import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "../contexts/LanguageContext";
@@ -36,6 +37,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+
 export const metadata: Metadata = {
   title: "Academia Lendária",
   description: "Ecossistema de Educação & Inovação com IA",
@@ -53,24 +60,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${neueHaas.variable}`}>
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            window.pixelId = "696f8b549a741977dffb6b76";
-            var a = document.createElement("script");
-            a.setAttribute("async", "");
-            a.setAttribute("defer", "");
-            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-            document.head.appendChild(a);
-          `}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${neueHaas.variable} ${inter.variable}`}>
+        <Script id="pixel-id" strategy="lazyOnload">
+          {`window.pixelId = "696f8b549a741977dffb6b76";`}
         </Script>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+          strategy="lazyOnload"
+          async
+          defer
+        />
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck
           data-utmify-prevent-subids
+          strategy="lazyOnload"
           async
           defer
         />
+
         <LanguageProvider>
           {children}
         </LanguageProvider>
