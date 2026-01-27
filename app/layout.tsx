@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import "./globals.css";
 import { LanguageProvider } from "../contexts/LanguageContext";
 import Script from "next/script";
 
@@ -65,6 +64,13 @@ export default function RootLayout({
             document.head.appendChild(a);
           `}
         </Script>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subids
+          async
+          defer
+        />
         <LanguageProvider>
           {children}
         </LanguageProvider>
