@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import styles from './mmi.module.css';
@@ -117,7 +117,7 @@ export default function Home() {
         };
 
         checkDarkMode();
-        window.addEventListener('scroll', checkDarkMode);
+        window.addEventListener('scroll', checkDarkMode, { passive: true });
 
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -130,7 +130,7 @@ export default function Home() {
                     }
                 }
             },
-            { threshold: 0.2 }
+            { threshold: 0.1 }
         );
 
         if (bioSectionRef.current) {
@@ -152,7 +152,7 @@ export default function Home() {
                 }
             });
         }, {
-            threshold: 0.15,
+            threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         });
 
@@ -197,11 +197,14 @@ export default function Home() {
                 <div className={styles.heroContainer}>
                     <div className={styles.imageSection}>
                         <Image
-                            src="/BG-Bruno.png"
-                            alt="Bruno"
+                            src="/BG-Bruno.webp"
+                            alt="Bruno Andrade"
                             width={600}
                             height={800}
                             priority
+                            fetchPriority="high"
+                            quality={85}
+                            sizes="(max-width: 768px) 100vw, 600px"
                             className={styles.brunoImage}
                         />
                     </div>
@@ -315,11 +318,12 @@ export default function Home() {
 
                     <div className={`${styles.marketCard} ${styles.imageCard}`}>
                         <Image
-                            src="/BG-C4.png"
+                            src="/BG-C4.webp"
                             alt="Market Change"
                             fill
                             className={styles.marketImage}
                             sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={75}
                         />
                     </div>
 

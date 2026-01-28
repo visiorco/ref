@@ -75,7 +75,6 @@
     align-items: flex-end;
     justify-content: flex-start;
     min-height: 500px;
-    animation: slideRight 1s ease-out forwards;
 }
 
 .brunoImage {
@@ -100,8 +99,7 @@
     /* Medium */
     line-height: 1.2;
     color: #808080;
-    animation: slideUp 1.6s cubic-bezier(0.2, 0, 0, 1) forwards;
-    opacity: 0;
+    opacity: 1;
 }
 
 .headline strong {
@@ -117,8 +115,7 @@
     /* Base color */
     font-weight: 500;
     max-width: 500px;
-    animation: slideUp 1.6s cubic-bezier(0.2, 0, 0, 1) forwards;
-    opacity: 0;
+    opacity: 1;
     transition: color 0.6s ease;
 }
 

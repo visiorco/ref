@@ -5,11 +5,13 @@ export default function MethodologySection({ scrollToPricing }: { scrollToPricin
     return (
         <section className={styles.methodologySection}>
             <Image
-                src="/BG-Metodo.png"
+                src="/BG-Metodo.webp"
                 alt="Background"
                 fill
                 className={styles.methodologyBg}
                 loading="lazy"
+                sizes="100vw"
+                quality={75}
             />
             <div className={styles.methodologyContainer}>
 

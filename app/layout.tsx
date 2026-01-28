@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import localFont from "next/font/local";
 import "./globals.css";
@@ -25,21 +25,13 @@ const neueHaas = localFont({
     },
   ],
   variable: "--font-neue-haas",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 
@@ -60,7 +52,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${neueHaas.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.utmify.com.br" />
+      </head>
+      <body className={`${neueHaas.variable} ${inter.variable}`}>
         <Script id="pixel-id" strategy="lazyOnload">
           {`window.pixelId = "696f8b549a741977dffb6b76";`}
         </Script>

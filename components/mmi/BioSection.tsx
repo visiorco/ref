@@ -8,11 +8,13 @@ const BioSection = forwardRef<HTMLElement>((props, ref: ForwardedRef<HTMLElement
             <div className={styles.bioContainer}>
                 <div className={styles.bioImageWrapper}>
                     <Image
-                        src="/Bruno-BIO.png"
+                        src="/Bruno-BIO.webp"
                         alt="Bruno Andrade"
                         width={500}
                         height={600}
                         className={styles.bioImage}
+                        quality={75}
+                        sizes="(max-width: 768px) 100vw, 500px"
                     />
                 </div>
 
