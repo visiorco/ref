@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import styles from '../../app/mmi.module.css';
 
-export default function InvestmentSection({ openModal }: { openModal: () => void }) {
+interface InvestmentSectionProps {
+    openModal: () => void;
+    mode?: 'paciente' | 'cliente';
+}
+
+export default function InvestmentSection({ openModal, mode = 'paciente' }: InvestmentSectionProps) {
+    const isCliente = mode === 'cliente';
+
     const items = [
         "Aula ao vivo com Bruno Andrade (transmitido no Zoom)",
         "Acesso completo à Metodologia MMI",
@@ -14,11 +21,23 @@ export default function InvestmentSection({ openModal }: { openModal: () => void
         <section className={styles.investmentSection} id="pricing">
             <div className={styles.investmentGrid}>
                 <h2 className={styles.investmentTitle}>
-                    Qual é o investimento para <strong>se tornar relevante na sua região?</strong>
+                    {isCliente ? (
+                        <>Qual é o investimento para <strong>se tornar relevante no seu mercado?</strong></>
+                    ) : (
+                        <>Qual é o investimento para <strong>se tornar relevante na sua região?</strong></>
+                    )}
                 </h2>
 
                 <p className={styles.investmentDesc}>
-                    Uma manhã lapidando o seu posicionamento, com a <strong>metodologia mmi</strong>, usada por especialistas da saúde que deixaram de ser vistos como “só mais um” e passaram a ser <strong>reconhecidos, bem pagos e naturalmente recomendados</strong> pelos pacientes certos.
+                    {isCliente ? (
+                        <>
+                            Uma manhã lapidando o seu posicionamento, com a <strong>Metodologia MMI</strong>, usada por profissionais que deixaram de ser vistos como “só mais um” e passaram a ser <strong>reconhecidos, bem pagos e naturalmente recomendados</strong> pelos clientes certos.
+                        </>
+                    ) : (
+                        <>
+                            Uma manhã lapidando o seu posicionamento, com a <strong>Metodologia MMI</strong>, usada por especialistas da saúde que deixaram de ser vistos como “só mais um” e passaram a ser <strong>reconhecidos, bem pagos e naturalmente recomendados</strong> pelos pacientes certos.
+                        </>
+                    )}
                 </p>
 
                 <div className={styles.investmentBottomWrapper}>

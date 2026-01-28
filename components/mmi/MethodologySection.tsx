@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import styles from '../../app/mmi.module.css';
 
-export default function MethodologySection({ scrollToPricing }: { scrollToPricing: () => void }) {
+interface MethodologySectionProps {
+    scrollToPricing: () => void;
+    mode?: 'paciente' | 'cliente';
+}
+
+export default function MethodologySection({ scrollToPricing, mode = 'paciente' }: MethodologySectionProps) {
+    const isCliente = mode === 'cliente';
+
     return (
         <section className={styles.methodologySection}>
             <Image
@@ -41,9 +48,19 @@ export default function MethodologySection({ scrollToPricing }: { scrollToPricin
                         <div>
                             <h3 className={styles.methodLabel}>Mensagem</h3>
                             <p className={styles.methodText}>
-                                Aqui você aprenderá a comunicar de uma maneira que sempre explique aquilo que faz as pessoas falarem "é isso que eu quero", "é isso que eu preciso".
-                                <br /><br />
-                                Você eliminará toda a confusão da sua mensagem que faz chegar os pacientes/clientes que você não quer atender. Dominará a clareza necessária para atrair exatamente quem você deseja.
+                                {isCliente ? (
+                                    <>
+                                        Aqui você aprenderá a comunicar de uma maneira que sempre explique aquilo que faz as pessoas falarem "é isso que eu quero", "é isso que eu preciso".
+                                        <br /><br />
+                                        Você eliminará toda a confusão da sua mensagem que faz chegar os clientes que você não quer atender. Dominará a clareza necessária para atrair exatamente quem você deseja.
+                                    </>
+                                ) : (
+                                    <>
+                                        Aqui você aprenderá a comunicar de uma maneira que sempre explique aquilo que faz as pessoas falarem "é isso que eu quero", "é isso que eu preciso".
+                                        <br /><br />
+                                        Você eliminará toda a confusão da sua mensagem que faz chegar os pacientes/clientes que você não quer atender. Dominará a clareza necessária para atrair exatamente quem você deseja.
+                                    </>
+                                )}
                             </p>
                         </div>
                     </div>
@@ -54,9 +71,19 @@ export default function MethodologySection({ scrollToPricing }: { scrollToPricin
                         <div>
                             <h3 className={styles.methodLabel}>Imagem</h3>
                             <p className={styles.methodText}>
-                                Por fim, você entenderá como construir uma imagem estratégica que impulsione a sua autoridade, atraia pacientes qualificados e sustente a mensagem que foi construída.
-                                <br /><br />
-                                Essa imagem será refletida nas suas redes sociais e também no mundo offline, criando coerência e credibilidade em todos os pontos de contato.
+                                {isCliente ? (
+                                    <>
+                                        Por fim, você entenderá como construir uma imagem estratégica que impulsione a sua autoridade, atraia clientes qualificados e sustente a mensagem que foi construída.
+                                        <br /><br />
+                                        Essa imagem será refletida nas suas redes sociais e também no mundo offline, criando coerência e credibilidade em todos os pontos de contato.
+                                    </>
+                                ) : (
+                                    <>
+                                        Por fim, você entenderá como construir uma imagem estratégica que impulsione a sua autoridade, atraia pacientes qualificados e sustente a mensagem que foi construída.
+                                        <br /><br />
+                                        Essa imagem será refletida nas suas redes sociais e também no mundo offline, criando coerência e credibilidade em todos os pontos de contato.
+                                    </>
+                                )}
                             </p>
                         </div>
                     </div>
