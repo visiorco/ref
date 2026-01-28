@@ -69,12 +69,11 @@ export default function Home() {
                 keepalive: true
             });
 
-            fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/8eae9e52-7f44-48a0-8cf6-f2e002822d26', {
+            fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/bf74cc08-35e9-4835-87d7-a16faccb6413', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
-                keepalive: true,
-                mode: 'no-cors'
+                keepalive: true
             });
 
             setTimeout(() => {
