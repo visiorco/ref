@@ -78,14 +78,23 @@ export default function Home() {
 
             setTimeout(() => {
                 const cleanPhone = formData.phone.replace(/\D/g, '');
-                const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
+
+                // Add UTMs to Eduzz URL
+                const currentQuery = window.location.search;
+                const separator = currentQuery ? (currentQuery.includes('?') ? '&' : '?') : '?';
+                const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
+
+                const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
+
                 window.location.href = eduzzUrl;
             }, 600);
 
         } catch (error) {
             console.error('Error submitting form:', error);
             const cleanPhone = formData.phone.replace(/\D/g, '');
-            const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
+            const currentQuery = window.location.search;
+            const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
+            const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
             window.location.href = eduzzUrl;
         }
     };
