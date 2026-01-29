@@ -20,13 +20,15 @@ export default function Home() {
         name: '',
         email: '',
         phone: '',
-        revenue: ''
+        revenue: '',
+        instagram: ''
     });
     const [focused, setFocused] = useState({
         name: false,
         email: false,
         phone: false,
-        revenue: false
+        revenue: false,
+        instagram: false
     });
 
     const guaranteeSectionRef = useRef<HTMLElement>(null);
@@ -100,7 +102,7 @@ export default function Home() {
     const openModal = () => {
         setIsModalOpen(true);
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', phone: '', revenue: '' });
+        setFormData({ name: '', email: '', phone: '', revenue: '', instagram: '' });
     };
 
     const scrollToPricing = () => {

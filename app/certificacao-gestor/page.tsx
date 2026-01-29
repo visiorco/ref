@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Certificação Gestor de IA | Academia Lendária',
+    title: 'Certificação Gestor de IA | Referência Máxima',
     description: 'Seja pago para implementar Inteligência Artificial em empresas reais.',
 };
 

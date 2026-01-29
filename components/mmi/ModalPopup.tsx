@@ -89,6 +89,22 @@ export default function ModalPopup({
                             </div>
 
                             <div className={styles.modalInputGroup}>
+                                <input
+                                    type="text"
+                                    placeholder=" "
+                                    className={styles.modalInput}
+                                    value={formData.instagram}
+                                    onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                                    onFocus={() => setFocused({ ...focused, instagram: true })}
+                                    onBlur={() => setFocused({ ...focused, instagram: false })}
+                                    required
+                                />
+                                <label className={`${styles.modalFloatingLabel} ${(formData.instagram || focused.instagram) ? styles.modalFloatingLabelActive : ''}`}>
+                                    Instagram
+                                </label>
+                            </div>
+
+                            <div className={styles.modalInputGroup}>
                                 <select
                                     className={styles.modalSelect}
                                     value={formData.revenue}

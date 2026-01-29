@@ -36,7 +36,7 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: "Academia Lendária",
+  title: "Referência Máxima",
   description: "Ecossistema de Educação & Inovação com IA",
   icons: {
     icon: "/FAV-Icon.png",
