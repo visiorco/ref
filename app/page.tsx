@@ -8,7 +8,6 @@ import styles from './mmi.module.css';
 // Dynamic Imports for performance
 const MethodologySection = dynamic(() => import('../components/mmi/MethodologySection'), { ssr: true });
 const InvestmentSection = dynamic(() => import('../components/mmi/InvestmentSection'), { ssr: true });
-const BioSection = dynamic(() => import('../components/mmi/BioSection'), { ssr: true });
 const FAQSection = dynamic(() => import('../components/mmi/FAQSection'), { ssr: true });
 const ModalPopup = dynamic(() => import('../components/mmi/ModalPopup'), { ssr: false });
 
@@ -30,7 +29,6 @@ export default function Home() {
         revenue: false
     });
 
-    const bioSectionRef = useRef<HTMLElement>(null);
 
     const maskPhone = (value: string) => {
         return value
@@ -113,45 +111,6 @@ export default function Home() {
     };
 
     useEffect(() => {
-        const checkDarkMode = () => {
-            if (bioSectionRef.current) {
-                const rect = bioSectionRef.current.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8) {
-                    setIsDarkMode(true);
-                } else {
-                    setIsDarkMode(false);
-                }
-            }
-        };
-
-        checkDarkMode();
-        window.addEventListener('scroll', checkDarkMode, { passive: true });
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsDarkMode(true);
-                } else {
-                    const bounding = entry.boundingClientRect;
-                    if (bounding.top > 0) {
-                        setIsDarkMode(false);
-                    }
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (bioSectionRef.current) {
-            observer.observe(bioSectionRef.current);
-        }
-
-        return () => {
-            observer.disconnect();
-            window.removeEventListener('scroll', checkDarkMode);
-        };
-    }, []);
-
-    useEffect(() => {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -169,7 +128,6 @@ export default function Home() {
             .${styles.pillarsSection}, 
             .${styles.methodologySection}, 
             .${styles.investmentSection}, 
-            .${styles.bioSection}, 
             .${styles.guaranteeSection}, 
             .${styles.faqSection}, 
             .${styles.ctaSection}
@@ -362,7 +320,6 @@ export default function Home() {
 
             <InvestmentSection openModal={openModal} />
 
-            <BioSection ref={bioSectionRef} />
 
             {/* Guarantee Section */}
             <section className={styles.guaranteeSection}>
