@@ -325,12 +325,12 @@ export default function Home() {
 
                     <div className={`${styles.marketCard} ${styles.imageCard}`}>
                         <Image
-                            src="/BG-C4.webp"
+                            src="/BG-Clientes.webp"
                             alt="Market Change"
                             fill
                             className={styles.marketImage}
                             sizes="(max-width: 768px) 100vw, 33vw"
-                            quality={75}
+                            quality={85}
                         />
                     </div>
 
