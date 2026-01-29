@@ -29,6 +29,7 @@ export default function Home() {
         revenue: false
     });
 
+    const guaranteeSectionRef = useRef<HTMLElement>(null);
 
     const maskPhone = (value: string) => {
         return value
@@ -79,7 +80,6 @@ export default function Home() {
 
                 // Add UTMs to Eduzz URL
                 const currentQuery = window.location.search;
-                const separator = currentQuery ? (currentQuery.includes('?') ? '&' : '?') : '?';
                 const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
 
                 const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
@@ -140,6 +140,45 @@ export default function Home() {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const checkDarkMode = () => {
+            if (guaranteeSectionRef.current) {
+                const rect = guaranteeSectionRef.current.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    setIsDarkMode(true);
+                } else {
+                    setIsDarkMode(false);
+                }
+            }
+        };
+
+        checkDarkMode();
+        window.addEventListener('scroll', checkDarkMode, { passive: true });
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsDarkMode(true);
+                } else {
+                    const bounding = entry.boundingClientRect;
+                    if (bounding.top > 0) {
+                        setIsDarkMode(false);
+                    }
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (guaranteeSectionRef.current) {
+            observer.observe(guaranteeSectionRef.current);
+        }
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', checkDarkMode);
+        };
+    }, []);
+
     return (
         <div className={`${styles.pageWrapper} ${isDarkMode ? styles.darkMode : ''}`}>
             {/* Header */}
@@ -177,11 +216,11 @@ export default function Home() {
 
                     <div className={styles.contentSection}>
                         <h1 className={styles.headline}>
-                            Como Atrair <strong>Pacientes que Pagam Mais</strong>, Dão Valor ao seu trabalho e te Recomendam <strong>Naturalmente.</strong>
+                            Uma nova forma de <strong>atrair os pacientes certos</strong> e se tornar a <strong>única opção</strong> na sua região.
                         </h1>
 
                         <p className={styles.description}>
-                            Existe um tipo de paciente que é mais consciente, segue suas orientações e impulsiona o seu posicionamento. Você só precisa saber como se tornar a escolha óbvia para ele.
+                            Para especialistas que desejam construir um posicionamento de alto valor e atrair pacientes que não pedem desconto, mas que valorizam o seu trabalho.
                         </p>
 
                         <div className={styles.heroButtonWrapper}>
@@ -205,9 +244,8 @@ export default function Home() {
                         <div className={styles.badgeWrapper}>
                             <div className={styles.badgeDot}></div>
                             <p className={styles.badgeText}>
-                                Aula Exclusiva para Médicos,<br />
-                                Dentistas e Profissionais<br />
-                                da Área da Saúde.
+                                Novo Contexto<br />
+                                dos Pacientes
                             </p>
                         </div>
                     </div>
@@ -215,7 +253,7 @@ export default function Home() {
                     <div className={styles.storyRight}>
                         <div className={styles.storyTextLarge}>
                             <p>
-                                Se <strong>você está cansado de ver pessoas que começaram depois do que você,</strong> menos capacitadas que nao entregam tudo o que você entrega, mas… <strong>possuem um resultado mais alto do que o seu, alcançam pacientes mais relevantes,</strong> faturam mais e tem visibilidade no que fazem do que você.
+                                Se <strong>você está cansado de ver profissionais que começarem depois do que você,</strong> menos capacitados que não entregam tudo o que você entrega, mas… <strong>possuem um resultado mais alto do que o seu, alcançam pacientes mais relevantes,</strong> faturam mais e tem mais visibilidade no que fazem do que você.
                             </p>
                         </div>
 
@@ -248,17 +286,17 @@ export default function Home() {
 
                     <div className={styles.successRight}>
                         <p className={styles.successDesc}>
-                            Depois de <strong>ser convidado para os podcasts ultra relevantes como Joel Jota</strong> eu decidi abrir para profissionais que desejam <strong>construir valor pro seu nome e levar isso para os seus negócios.</strong>
+                            Depois de <strong>ser convidado para os podcasts ultra relevantes como Joel Jota</strong>, eu decidi abrir para profissionais que desejam <strong>construir valor para o seu nome e levar isso para os seus negócios.</strong>
                         </p>
 
                         <p className={styles.successDesc}>
-                            <strong>Se você é médico, dentista ou profissional da área da saúde,</strong> esse conteúdo será cirurgicamente para você, porque afinal o nosso objetivo é trabalhar com profissionais que podem <strong>trabalhar com protocolo de alto valor</strong> e oferecer isso ao mercado.
+                            <strong>Se você tem um consultório ou é um profissional da saúde</strong>, esse conteúdo será cirurgicamente pra você, porque afinal o nosso objetivo é trabalhar com profissionais que podem <strong>cobrar mais por seu trabalho e serem mais valorizados.</strong>
                         </p>
                     </div>
                 </div>
             </section>
 
-            <MethodologySection scrollToPricing={scrollToPricing} />
+            <MethodologySection scrollToPricing={scrollToPricing} mode="paciente" />
 
             {/* Market Change Section */}
             <section className={styles.marketSection}>
@@ -322,7 +360,7 @@ export default function Home() {
 
 
             {/* Guarantee Section */}
-            <section className={styles.guaranteeSection}>
+            <section className={styles.guaranteeSection} ref={guaranteeSectionRef}>
                 <div className={styles.guaranteeContainer}>
                     <h2 className={styles.guaranteeTitle}>
                         Garantia<br />
@@ -384,3 +422,4 @@ export default function Home() {
         </div>
     );
 }
+

@@ -29,6 +29,7 @@ export default function Home() {
         revenue: false
     });
 
+    const guaranteeSectionRef = useRef<HTMLElement>(null);
 
     const maskPhone = (value: string) => {
         return value
@@ -140,6 +141,45 @@ export default function Home() {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        const checkDarkMode = () => {
+            if (guaranteeSectionRef.current) {
+                const rect = guaranteeSectionRef.current.getBoundingClientRect();
+                if (rect.top <= window.innerHeight * 0.8) {
+                    setIsDarkMode(true);
+                } else {
+                    setIsDarkMode(false);
+                }
+            }
+        };
+
+        checkDarkMode();
+        window.addEventListener('scroll', checkDarkMode, { passive: true });
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsDarkMode(true);
+                } else {
+                    const bounding = entry.boundingClientRect;
+                    if (bounding.top > 0) {
+                        setIsDarkMode(false);
+                    }
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (guaranteeSectionRef.current) {
+            observer.observe(guaranteeSectionRef.current);
+        }
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', checkDarkMode);
+        };
+    }, []);
+
     return (
         <div className={`${styles.pageWrapper} ${isDarkMode ? styles.darkMode : ''}`}>
             {/* Header */}
@@ -246,7 +286,7 @@ export default function Home() {
                     </div>
 
                     <div className={styles.successRight}>
-                        <p className={styles.successDesc}>
+                        <p className={styles.successLeft}>
                             Depois de <strong>ser convidado para os podcasts ultra relevantes como Joel Jota</strong>, eu decidi abrir para profissionais que desejam <strong>construir valor para o seu nome e levar isso para os seus negócios.</strong>
                         </p>
 
@@ -269,7 +309,7 @@ export default function Home() {
                         <div className={styles.checkList}>
                             {[
                                 "Você atrairá o perfil de cliente que sempre sonhou em atender",
-                                "Você será visto como referência na sua região e conquistará o respeito de muitos",
+                                "Você será visto como referência na sua região e conquistará o respeito of muitos",
                                 "Você poderá começar a receber convites para palestrar em eventos da sua área",
                                 "As pessoas irão te escolher pela oportunidade de ser atendidas por você e não pelo preço mais baixo"
                             ].map((item, i) => (
@@ -321,7 +361,7 @@ export default function Home() {
 
 
             {/* Guarantee Section */}
-            <section className={styles.guaranteeSection}>
+            <section className={styles.guaranteeSection} ref={guaranteeSectionRef}>
                 <div className={styles.guaranteeContainer}>
                     <h2 className={styles.guaranteeTitle}>
                         Garantia<br />
