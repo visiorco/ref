@@ -218,11 +218,11 @@ export default function Home() {
 
                     <div className={styles.contentSection}>
                         <h1 className={styles.headline}>
-                            Uma nova forma de <strong>atrair os pacientes certos</strong> e se tornar a <strong>única opção</strong> na sua região.
+                            Como atrair pacientes que pagam mais, dão valor ao seu trabalho e te recomendam naturalmente
                         </h1>
 
                         <p className={styles.description}>
-                            Para especialistas que desejam construir um posicionamento de alto valor e atrair pacientes que não pedem desconto, mas que valorizam o seu trabalho.
+                            Existe um tipo de paciente que é mais consciente, segue suas orientações e impulsiona o seu posicionamento. Você só precisa saber como se tornar a escolha óbvia para ele.
                         </p>
 
                         <div className={styles.heroButtonWrapper}>
