@@ -219,7 +219,7 @@ export default function Home() {
 
                     <div className={styles.contentSection}>
                         <h1 className={styles.headline}>
-                            Como atrair clientes que pagam mais, dão valor ao seu trabalho e te recomendam naturalmente.
+                            Como <strong>atrair clientes que pagam mais,</strong> dão valor ao seu trabalho e te recomendam naturalmente.
                         </h1>
 
                         <p className={styles.description}>
