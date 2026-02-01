@@ -30,7 +30,7 @@ export default function ModalPopup({
     return (
         <div className={`${styles.modalOverlay} ${styles.modalActive}`} onClick={onClose}>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                <button className={styles.closeButton} onClick={onClose}>
+                <button className={styles.closeButton} onClick={onClose} aria-label="Fechar modal">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
@@ -42,6 +42,7 @@ export default function ModalPopup({
                         <form className={styles.popupForm} onSubmit={handleFormSubmit}>
                             <div className={styles.modalInputGroup}>
                                 <input
+                                    id="modal-name"
                                     type="text"
                                     placeholder=" "
                                     className={styles.modalInput}
@@ -51,13 +52,14 @@ export default function ModalPopup({
                                     onBlur={() => setFocused({ ...focused, name: false })}
                                     required
                                 />
-                                <label className={`${styles.modalFloatingLabel} ${(formData.name || focused.name) ? styles.modalFloatingLabelActive : ''}`}>
+                                <label htmlFor="modal-name" className={`${styles.modalFloatingLabel} ${(formData.name || focused.name) ? styles.modalFloatingLabelActive : ''}`}>
                                     Nome
                                 </label>
                             </div>
 
                             <div className={styles.modalInputGroup}>
                                 <input
+                                    id="modal-email"
                                     type="email"
                                     placeholder=" "
                                     className={styles.modalInput}
@@ -67,13 +69,14 @@ export default function ModalPopup({
                                     onBlur={() => setFocused({ ...focused, email: false })}
                                     required
                                 />
-                                <label className={`${styles.modalFloatingLabel} ${(formData.email || focused.email) ? styles.modalFloatingLabelActive : ''}`}>
+                                <label htmlFor="modal-email" className={`${styles.modalFloatingLabel} ${(formData.email || focused.email) ? styles.modalFloatingLabelActive : ''}`}>
                                     E-mail
                                 </label>
                             </div>
 
                             <div className={styles.modalInputGroup}>
                                 <input
+                                    id="modal-phone"
                                     type="tel"
                                     placeholder=" "
                                     className={styles.modalInput}
@@ -83,13 +86,14 @@ export default function ModalPopup({
                                     onBlur={() => setFocused({ ...focused, phone: false })}
                                     required
                                 />
-                                <label className={`${styles.modalFloatingLabel} ${(formData.phone || focused.phone) ? styles.modalFloatingLabelActive : ''}`}>
+                                <label htmlFor="modal-phone" className={`${styles.modalFloatingLabel} ${(formData.phone || focused.phone) ? styles.modalFloatingLabelActive : ''}`}>
                                     WhatsApp
                                 </label>
                             </div>
 
                             <div className={styles.modalInputGroup}>
                                 <input
+                                    id="modal-instagram"
                                     type="text"
                                     placeholder=" "
                                     className={styles.modalInput}
@@ -99,13 +103,14 @@ export default function ModalPopup({
                                     onBlur={() => setFocused({ ...focused, instagram: false })}
                                     required
                                 />
-                                <label className={`${styles.modalFloatingLabel} ${(formData.instagram || focused.instagram) ? styles.modalFloatingLabelActive : ''}`}>
+                                <label htmlFor="modal-instagram" className={`${styles.modalFloatingLabel} ${(formData.instagram || focused.instagram) ? styles.modalFloatingLabelActive : ''}`}>
                                     Instagram
                                 </label>
                             </div>
 
                             <div className={styles.modalInputGroup}>
                                 <select
+                                    id="modal-revenue"
                                     className={styles.modalSelect}
                                     value={formData.revenue}
                                     onChange={(e) => setFormData({ ...formData, revenue: e.target.value })}
@@ -121,7 +126,7 @@ export default function ModalPopup({
                                     <option value="R$50.001 a R$100.000">R$50.001 a R$100.000</option>
                                     <option value="Acima de R$100.000">Acima de R$100.000</option>
                                 </select>
-                                <label className={`${styles.modalFloatingLabel} ${(formData.revenue || focused.revenue) ? styles.modalFloatingLabelActive : ''}`}>
+                                <label htmlFor="modal-revenue" className={`${styles.modalFloatingLabel} ${(formData.revenue || focused.revenue) ? styles.modalFloatingLabelActive : ''}`}>
                                     Qual seu faturamento mensal?
                                 </label>
                             </div>
@@ -131,7 +136,7 @@ export default function ModalPopup({
                                 className={styles.modalSubmit}
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? 'Enviando...' : 'GARANTIR MINHA VAGA'}
+                                {isSubmitting ? 'Enviando...' : 'Quero garantir minha vaga'}
                             </button>
                         </form>
                     </>
@@ -147,7 +152,7 @@ export default function ModalPopup({
                             Seus dados foram enviados com sucesso. <br />
                             Entraremos em contato em breve via WhatsApp.
                         </p>
-                        <button className={styles.modalSubmit} onClick={onClose}>
+                        <button className={styles.modalSubmit} onClick={onClose} aria-label="Fechar confirmação">
                             FECHAR
                         </button>
                     </div>

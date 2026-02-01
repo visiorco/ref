@@ -56,26 +56,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.utmify.com.br" />
-        <Script id="pixel-id">
-          {`window.pixelId = "696f8b549a741977dffb6b76";`}
-        </Script>
-        <Script
-          src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
-          async
-          defer
-        />
-        <Script
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck
-          data-utmify-prevent-subids
-          async
-          defer
-        />
       </head>
       <body className={`${neueHaas.variable} ${inter.variable}`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>
+
+        <Script id="pixel-id" strategy="afterInteractive">
+          {`window.pixelId = "696f8b549a741977dffb6b76";`}
+        </Script>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subids
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

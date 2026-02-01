@@ -265,7 +265,6 @@
 .pillarsSection,
 .methodologySection,
 .investmentSection,
-.bioSection,
 .guaranteeSection,
 .faqSection,
 .ctaSection {
@@ -1210,97 +1209,6 @@
     }
 }
 
-/* Bio Section */
-.bioSection {
-    background-color: transparent;
-    padding: 64px 0 64px 0;
-    width: 100%;
-}
-
-.bioContainer {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 96px;
-    align-items: center;
-    background-color: #161616;
-    padding: 16px;
-    border-radius: 32px;
-}
-
-.bioImageWrapper {
-    width: 100%;
-}
-
-.bioImage {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    object-fit: cover;
-    display: block;
-}
-
-.bioContent {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    padding-right: 80px;
-}
-
-.bioTitle {
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 1.3;
-    color: #777;
-    max-width: 560px;
-}
-
-.bioTitle strong {
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.bioColumns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.bioText {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #777;
-    font-weight: 500;
-}
-
-@media (max-width: 1024px) {
-    .bioContainer {
-        grid-template-columns: 1fr;
-        padding: 40px !important;
-        gap: 48px;
-        text-align: center;
-    }
-
-    .bioContent {
-        padding-right: 0;
-        align-items: center;
-    }
-
-    .bioTitle {
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .bioColumns {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .bioText {
-        text-align: center;
-    }
-}
 
 /* Guarantee Section */
 .guaranteeSection {
@@ -2428,31 +2336,6 @@
         text-align: center;
     }
 
-    /* Section Bio Mobile */
-    .bioSection {
-        padding: 64px 16px 0 16px !important;
-    }
-
-    .bioContainer {
-        padding: 16px 16px 32px 16px !important;
-        gap: 24px;
-        text-align: center;
-    }
-
-    .bioContent {
-        padding: 0 24px !important;
-        align-items: center;
-    }
-
-    .bioTitle {
-        font-size: 24px !important;
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    .bioText {
-        text-align: center;
-    }
 
     /* Section 06 Mobile (Guarantee) */
     .guaranteeSection {
@@ -2653,9 +2536,9 @@
 }
 
 .modalSubmit:hover {
-    background-color: #e65500 !important;
+    background-color: #4BA2BD !important;
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(255, 94, 0, 0.2);
+    box-shadow: 0 12px 24px rgba(75, 162, 189, 0.2);
 }
 
 .modalSubmit:disabled {

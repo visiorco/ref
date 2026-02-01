@@ -55,7 +55,7 @@ export default function InvestmentSection({ openModal, mode = 'paciente' }: Inve
                             <div className={styles.priceSmall}>Hoje será apenas,</div>
                             <div className={styles.priceDisplay}>R$ 67</div>
                         </div>
-                        <button className={styles.priceButton} onClick={openModal}>
+                        <button className={styles.priceButton} onClick={openModal} aria-label="Garantir minha vaga e se tornar relevante">
                             <div className={styles.priceButtonText}>GARANTIR MINHA VAGA</div>
                             <div className={styles.priceArrowCircle}>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
