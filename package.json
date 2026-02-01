@@ -9,15 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "cobe": "^0.6.5",
-    "motion": "^12.23.26",
     "next": "16.1.1",
-    "ogl": "^1.0.11",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-spring": "^10.0.3",
-    "tailwind-merge": "^3.4.0"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",

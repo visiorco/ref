@@ -212,7 +212,7 @@ export default function Home() {
                                 height={800}
                                 priority
                                 fetchPriority="high"
-                                quality={75}
+                                quality={60}
                                 sizes="(max-width: 768px) 100vw, 600px"
                                 className={styles.brunoImage}
                             />
