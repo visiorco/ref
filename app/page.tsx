@@ -61,6 +61,18 @@ export default function Home() {
             source: 'Landing Page MMI'
         };
 
+        const TARGET_DATE = new Date('2026-02-08T23:59:59-03:00');
+        const now = new Date();
+
+        // Define base URL and Product ID based on time
+        let BASE_URL = 'https://sun.eduzz.com';
+        let PRODUCT_ID = 'E0D68V8N91';
+
+        if (now > TARGET_DATE) {
+            BASE_URL = 'https://chk.eduzz.com';
+            PRODUCT_ID = 'Z0B5ZJZ4WA';
+        }
+
         try {
             fetch('https://script.google.com/macros/s/AKfycbwpWT4D8K910JgLrIzGxhrdRlswh3pQMt0uMtxjFXCRb4fjT-bekx99R1wt7aB-z0Wpfg/exec', {
                 method: 'POST',
@@ -84,7 +96,7 @@ export default function Home() {
                 const currentQuery = window.location.search;
                 const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
 
-                const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
+                const eduzzUrl = `${BASE_URL}/${PRODUCT_ID}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
 
                 window.location.href = eduzzUrl;
             }, 600);
@@ -94,7 +106,7 @@ export default function Home() {
             const cleanPhone = formData.phone.replace(/\D/g, '');
             const currentQuery = window.location.search;
             const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
-            const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
+            const eduzzUrl = `${BASE_URL}/${PRODUCT_ID}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
             window.location.href = eduzzUrl;
         }
     };
