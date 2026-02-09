@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from '../../app/mmi.module.css';
 
@@ -8,6 +9,23 @@ interface InvestmentSectionProps {
 
 export default function InvestmentSection({ openModal, mode = 'paciente' }: InvestmentSectionProps) {
     const isCliente = mode === 'cliente';
+    const [price, setPrice] = useState('67');
+
+    useEffect(() => {
+        const checkTime = () => {
+            const TARGET_DATE = new Date('2026-02-08T23:59:59-03:00');
+            const now = new Date();
+
+            if (now > TARGET_DATE) {
+                setPrice('97');
+            }
+        };
+
+        checkTime();
+        // Check every minute just in case user keeps page open
+        const interval = setInterval(checkTime, 60000);
+        return () => clearInterval(interval);
+    }, []);
 
     const items = [
         "Aula ao vivo com Bruno Andrade (transmitido no Zoom)",
@@ -53,7 +71,7 @@ export default function InvestmentSection({ openModal, mode = 'paciente' }: Inve
                     <div className={styles.investmentPriceCard}>
                         <div className={styles.priceContainer}>
                             <div className={styles.priceSmall}>Hoje será apenas,</div>
-                            <div className={styles.priceDisplay}>R$ 67</div>
+                            <div className={styles.priceDisplay}>R$ {price}</div>
                         </div>
                         <button className={styles.priceButton} onClick={openModal} aria-label="Garantir minha vaga e se tornar relevante">
                             <div className={styles.priceButtonText}>GARANTIR MINHA VAGA</div>
