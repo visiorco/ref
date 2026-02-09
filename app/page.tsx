@@ -61,7 +61,7 @@ export default function Home() {
             source: 'Landing Page MMI'
         };
 
-        const TARGET_DATE = new Date('2026-02-08T23:59:59-03:00');
+        const TARGET_DATE = new Date('2026-02-07T23:59:59-03:00');
         const now = new Date();
 
         // Define base URL and Product ID based on time

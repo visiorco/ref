@@ -13,7 +13,7 @@ export default function InvestmentSection({ openModal, mode = 'paciente' }: Inve
 
     useEffect(() => {
         const checkTime = () => {
-            const TARGET_DATE = new Date('2026-02-08T23:59:59-03:00');
+            const TARGET_DATE = new Date('2026-02-07T23:59:59-03:00');
             const now = new Date();
 
             if (now > TARGET_DATE) {
