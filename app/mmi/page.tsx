@@ -61,17 +61,7 @@ export default function Home() {
             source: 'Landing Page MMI (B2B)'
         };
 
-        const TARGET_DATE = new Date('2026-02-07T23:59:59-03:00');
-        const now = new Date();
-
-        // Define base URL and Product ID based on time
-        let BASE_URL = 'https://sun.eduzz.com';
-        let PRODUCT_ID = 'E0D68V8N91';
-
-        if (now > TARGET_DATE) {
-            BASE_URL = 'https://chk.eduzz.com';
-            PRODUCT_ID = 'Z0B5ZJZ4WA';
-        }
+        const CHECKOUT_URL = 'https://pay.unifast.com.br/c/01kjfpqrp4ag8ggqr834scbkg1';
 
         try {
             fetch('https://script.google.com/macros/s/AKfycbwpWT4D8K910JgLrIzGxhrdRlswh3pQMt0uMtxjFXCRb4fjT-bekx99R1wt7aB-z0Wpfg/exec', {
@@ -92,13 +82,12 @@ export default function Home() {
             setTimeout(() => {
                 const cleanPhone = formData.phone.replace(/\D/g, '');
 
-                // Add UTMs to Eduzz URL
                 const currentQuery = window.location.search;
                 const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
 
-                const eduzzUrl = `${BASE_URL}/${PRODUCT_ID}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
+                const checkoutUrl = `${CHECKOUT_URL}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
 
-                window.location.href = eduzzUrl;
+                window.location.href = checkoutUrl;
             }, 600);
 
         } catch (error) {
@@ -106,8 +95,8 @@ export default function Home() {
             const cleanPhone = formData.phone.replace(/\D/g, '');
             const currentQuery = window.location.search;
             const utmParams = currentQuery.startsWith('?') ? currentQuery.substring(1) : currentQuery;
-            const eduzzUrl = `${BASE_URL}/${PRODUCT_ID}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
-            window.location.href = eduzzUrl;
+            const checkoutUrl = `${CHECKOUT_URL}?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}${utmParams ? `&${utmParams}` : ''}`;
+            window.location.href = checkoutUrl;
         }
     };
 
@@ -209,7 +198,7 @@ export default function Home() {
                         className={styles.logo}
                     />
                 </div>
-                <div className={styles.headerText}>21 • Fevereiro • 2026</div>
+                <div className={styles.headerText}>29 • Março • 2026</div>
             </header>
 
             {/* Hero */}

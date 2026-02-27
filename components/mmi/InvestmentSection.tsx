@@ -17,7 +17,7 @@ export default function InvestmentSection({ openModal, mode = 'paciente' }: Inve
             const now = new Date();
 
             if (now > TARGET_DATE) {
-                setPrice('97');
+                setPrice('197');
             }
         };
 
