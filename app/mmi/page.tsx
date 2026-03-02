@@ -61,7 +61,7 @@ export default function Home() {
             source: 'Landing Page MMI (B2B)'
         };
 
-        const CHECKOUT_URL = 'https://pay.unifast.com.br/c/01kjfpqrp4ag8ggqr834scbkg1';
+        const CHECKOUT_URL = 'https://sun.eduzz.com/Z0B5VKA7WA';
 
         try {
             fetch('https://script.google.com/macros/s/AKfycbwpWT4D8K910JgLrIzGxhrdRlswh3pQMt0uMtxjFXCRb4fjT-bekx99R1wt7aB-z0Wpfg/exec', {
@@ -72,7 +72,7 @@ export default function Home() {
                 keepalive: true
             });
 
-            fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/bf74cc08-35e9-4835-87d7-a16faccb6413', {
+            fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/1e92e619-14bf-478a-a2a8-6aabe37a4d5e', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),

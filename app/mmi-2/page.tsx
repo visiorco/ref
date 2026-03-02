@@ -100,7 +100,7 @@ export default function MMIPage() {
 
         try {
             // Envia para o CRM
-            await fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/8eae9e52-7f44-48a0-8cf6-f2e002822d26', {
+            await fetch('https://api.datacrazy.io/v1/crm/api/crm/integrations/webhook/business/1e92e619-14bf-478a-a2a8-6aabe37a4d5e', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ export default function MMIPage() {
 
             // Redireciona imediatamente para a Eduzz com o parâmetro de telefone correto
             const cleanPhone = formData.phone.replace(/\D/g, '');
-            const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
+            const eduzzUrl = `https://sun.eduzz.com/Z0B5VKA7WA?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
 
             window.location.href = eduzzUrl;
 
@@ -118,7 +118,7 @@ export default function MMIPage() {
             console.error('Error submitting form:', error);
             // Mesmo com erro no CRM, redireciona para não perder a venda
             const cleanPhone = formData.phone.replace(/\D/g, '');
-            const eduzzUrl = `https://sun.eduzz.com/E0D68V8N91?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
+            const eduzzUrl = `https://sun.eduzz.com/Z0B5VKA7WA?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}&phone=${cleanPhone}`;
             window.location.href = eduzzUrl;
         } finally {
             setIsSubmitting(false);
